@@ -1,0 +1,47 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore the virtual environment
+venv/
+.venv/
+.env/
+
+# Ignore local development settings
+local_settings.py
+
+# Ignore database files
+db.sqlite3
+
+# Ignore static and media files (if not using a CDN)
+staticfiles/
+media/
+
+# Ignore environment-specific settings
+*.env
+
+# Ignore logs and other temporary files
+logs/
+*.log
+*.swp
+*.swo
+
+# Ignore coverage reports
+.coverage
+htmlcov/
+
+# Ignore development and debugging tools
+.vscode/
+.idea/
+.pycharm/
+
+# Ignore sensitive or private information
+secret_key.txt
+settings.ini
+
+# Ignore compiled JavaScript files
+node_modules/
+*.js.map
+*.min.js
+
