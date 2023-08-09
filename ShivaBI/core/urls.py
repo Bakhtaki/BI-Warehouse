@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from Complaint.views import LandingPageView
 
 urlpatterns = [
+    path('', LandingPageView.as_view(), name='landing_page'),
     path('admin/', admin.site.urls),
     path('', include('Complaint.urls')),
 ]

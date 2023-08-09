@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.generic import FormView
+from django.views import generic
+from django.views.generic.edit import FormView
 from .forms import Create_ComplaintForm
-import jdatetime
 
 
 class ComplaintView(FormView):
@@ -14,5 +13,9 @@ class ComplaintView(FormView):
         return super(ComplaintView, form).form_valid(form)
 
 
-def complaint_list(request):
-    return HttpResponse(jdatetime.datetime.today().strftime("%Y/%m/%d"))
+class LandingPageView(generic.TemplateView):
+    template_name = 'landing.html'
+
+
+def landing_page(request):
+    return render(request, template_name='landing.html')
