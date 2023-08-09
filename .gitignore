@@ -45,3 +45,8 @@ node_modules/
 *.js.map
 *.min.js
 
+# Ignore HTML hints
+*.htmlhintcache
+*.htmlhint
+*.hintrc
+

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=100, initial-scale=1.0">
     <title>Complaint</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
 </head>
+
+<body>
     <form method="post" action="#">
         {% csrf_token %}
         {{ form.as_p }}
+        <button type="submit">Submit</button>
     </form>
-    <button type="submit" name="submit">Submit</button>
+    {{ form.media}}
+    <script src="{% static 'admin/js/core.js' %}"></script>
+
 </body>
 </html>
