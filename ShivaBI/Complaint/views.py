@@ -1,21 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
-from .forms import Create_ComplaintForm
+from .forms import LoginForm, UserRegisterForm
 
 
-class ComplaintView(FormView):
-    template_name = 'complaints.html'
-    form_class = Create_ComplaintForm
-    success_url = '/'
-
-    def form_valid(self, form):
-        return super(ComplaintView, form).form_valid(form)
+def index(request):
+    return render(request, 'Complaint/index.html')
 
 
-class LandingPageView(generic.TemplateView):
-    template_name = 'landing.html'
-
-
-def landing_page(request):
-    return render(request, template_name='landing.html')
+# Register a new user
+def register(request):
+    form = UserRegisterForm()
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # return redirect('Complaint:login')
+    # Context
+    context = {'form': form}
+    return render(request, 'Complaint/register.html', context=context)
