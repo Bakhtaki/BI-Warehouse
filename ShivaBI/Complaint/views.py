@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
 from .forms import LoginForm, UserRegisterForm
+from . models import Complaint
 
 
 def index(request):
@@ -47,7 +48,10 @@ def login(request):
 # Dashboard the user
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'Complaint/dashboard.html')
+
+    all_complaints = Complaint.objects.all()
+    context = {'all_complaints': all_complaints}
+    return render(request, 'Complaint/dashboard.html', context=context)
 
 
 # Logout a user

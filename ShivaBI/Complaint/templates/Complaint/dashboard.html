@@ -4,6 +4,16 @@
 {% block content %}
 
     <h1> Welcome to Dashboard {{ user }} </h1>
+    {% for complaint in all_complaints %}
+        {{complaint.id}}
+        {{ complaint.customer_name }}
+        {{ complaint.customer_family}}
+        {{ complaint.creation_date}}
+        {{ complaint.city}}
+        {{ complaint.product_category}}
+        {{ complaint.product_name}}
+        {{ complaint.action}}
+    {% endfor %}
 
 {% endblock %}
 
