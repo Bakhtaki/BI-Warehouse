@@ -18,7 +18,39 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            # return redirect('Complaint:login')
+            return redirect('login')
     # Context
     context = {'form': form}
     return render(request, 'Complaint/register.html', context=context)
+
+
+# Login a user
+def login(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # Authenticate the user
+            user = authenticate(request, username=username, password=password)
+            # Check if user exists
+            if user is not None:
+                auth.login(request, user)
+                return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, 'Complaint/login.html', context=context)
+
+
+# Dashboard the user
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request, 'Complaint/dashboard.html')
+
+
+# Logout a user
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
