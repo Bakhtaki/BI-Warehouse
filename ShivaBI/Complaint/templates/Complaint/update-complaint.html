@@ -1,0 +1,23 @@
+{% extends "Complaint/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<body>
+    <div class="container bg-light shawod-md p-5 form-layout">
+        <h3>Update Complaint</h3>
+        <h6 update-complaint-id="{{complaint.id}}">Complaint ID: {{complaint.id}}</h6>
+        <hr />
+        <br />
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+            {{form | crispy}}
+            <br />
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2">
+                Update Complaint
+            </button>
+        </form>
+        <br />
+        <br />
+</body>
+
+{% endblock %}

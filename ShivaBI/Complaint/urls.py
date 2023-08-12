@@ -12,4 +12,12 @@ urlpatterns = [
     path('login', views.login, name="login"),
     path('logout', views.logout, name="logout"),
     path('dashboard', views.dashboard, name="dashboard"),
+
+    # CRUD routes
+    # Create
+    path('create-complaint', views.create_complaint, name="create-complaint"),
+    # Update
+    path('update-complaint/<int:pk>',
+         views.update_complaint, name="update-complaint"),
+
 ]

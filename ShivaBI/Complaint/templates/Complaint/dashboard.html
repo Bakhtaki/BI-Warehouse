@@ -3,17 +3,42 @@
 
 {% block content %}
 
-    <h1> Welcome to Dashboard {{ user }} </h1>
-    {% for complaint in all_complaints %}
-        {{complaint.id}}
-        {{ complaint.customer_name }}
-        {{ complaint.customer_family}}
-        {{ complaint.creation_date}}
-        {{ complaint.city}}
-        {{ complaint.product_category}}
-        {{ complaint.product_name}}
-        {{ complaint.action}}
-    {% endfor %}
+    <h5> Welcome to Dashboard,  {{ user }} </h5>
+    <hr>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-complaint' %}">New Complaint</a>
+    <hr>
 
+    <table class="table table table-hover table-border">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Customer Family</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">City</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Action</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if complaints %}
+                {% for complaint in complaints %}
+                <tr>
+                    <td>{{ complaint.id }}</td>
+                    <td>{{ complaint.customer_name }}</td>
+                    <td>{{ complaint.customer_family }}</td>
+                    <td>{{ complaint.creation_date }}</td>
+                    <td>{{ complaint.city }}</td>
+                    <td>{{ complaint.product_category }}</td>
+                    <td>{{ complaint.product_name }}</td>
+                    <td>{{ complaint.action}}</td>
+                    <td><a class="btn btn-outline-primary btn-sm" href="{% url 'dashboard' %}">Details</a></td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
 {% endblock %}
 

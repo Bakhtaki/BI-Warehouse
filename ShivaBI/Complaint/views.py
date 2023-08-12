@@ -4,7 +4,10 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
-from .forms import LoginForm, UserRegisterForm
+from .forms import (
+    LoginForm, UserRegisterForm,
+    CreateComplaintForm, UpdateComplaintForm
+)
 from . models import Complaint
 
 
@@ -49,9 +52,51 @@ def login(request):
 @login_required(login_url='login')
 def dashboard(request):
 
-    all_complaints = Complaint.objects.all()
-    context = {'all_complaints': all_complaints}
+    complaints = Complaint.objects.all()
+    context = {'complaints': complaints}
     return render(request, 'Complaint/dashboard.html', context=context)
+
+
+# Create the new Complaint
+@login_required(login_url='login')
+def create_complaint(request):
+    form = CreateComplaintForm()
+    if request.method == 'POST':
+        form = CreateComplaintForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, 'Complaint/create_complaint.html', context=context)
+
+
+# Update the Complaint
+@login_required(login_url='login')
+def update_complaint(request, pk):
+    complaint = Complaint.objects.get(id=pk)
+    form = UpdateComplaintForm(instance=complaint)
+
+    if request.method == 'POST':
+        form = UpdateComplaintForm(request.POST, instance=complaint)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, 'Complaint/update_complaint.html', context=context)
+
+
+# View the single Complaint
+@login_required(login_url='login')
+def view_complaint(request, pk):
+
+    # All Complaints
+    all_complaints = Complaint.objects.get(id=pk)
+    context = {'complaint': all_complaints}
+
+    return render(request, 'Complaint/view_complaint.html', context=context)
+
 
 
 # Logout a user

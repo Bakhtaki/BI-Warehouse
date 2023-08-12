@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=100, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "Complaint/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
 <body>
-    <form method="post" action="#">
-        {% csrf_token %}
-        {{ form.as_p }}
-    </form>
-    <button type="submit">Submit</button>
+    <div class="container bg-light shawod-md p-5 form-layout">
+        <h3>Create Complaint</h3>
+        <h6> Create New Complaint </h6>
+        <hr />
+        <br />
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+            {{form | crispy}}
+            <br />
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2">
+                Create Complaint
+            </button>
+        </form>
+        <br />
+        <br />
 </body>
-</html>
+
+{% endblock %}
