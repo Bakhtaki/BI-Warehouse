@@ -101,6 +101,11 @@ def view_complaint(request, pk):
 # Delete a Complaint
 @login_required(login_url='login')
 def delete_complaint(request, pk):
+    complaint = Complaint.objects.get(id=pk)
+    complaint.delete()
+
+    return redirect('dashboard')
+
 
 # Logout a user
 def logout(request):

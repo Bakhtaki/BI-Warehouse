@@ -10,11 +10,74 @@
         <br />
         <form method="post" autocomplete="off">
             {% csrf_token %}
-            {{form | crispy}}
+            {{form.customer_name | as_crispy_field}}
             <br />
-            <button type="submit" class="btn btn-primary w-100 btn-block p-2">
-                Update Complaint
+            {{form.customer_family | as_crispy_field}}
+            <br>
+            {{form.customer_phone | as_crispy_field}}
+            <br>
+            {{form.Province | as_crispy_field}}
+            <br>
+            {{form.City | as_crispy_field}}
+            <br>
+            {{form.customer_address | as_crispy_field}}
+            <br>
+            {{form.Persian_year | as_crispy_field}}
+            <br>
+            {{form.Persian_month | as_crispy_field}}
+            <br>
+            {{form.Persian_day | as_crispy_field}}
+            <br>
+            {{form.customer_type | as_crispy_field}}
+            <br>
+            {{form.accepted | as_crispy_field}}
+            <br>
+            {{form.complaint_category | as_crispy_field}}
+            <br>
+            {{form.external_material | as_crispy_field}}
+            <br>
+            {{form.complaint_description | as_crispy_field}}
+            <br>
+            {{form.product_category | as_crispy_field}}
+            <br>
+            {{form.product_code | as_crispy_field}}
+            <br>
+            {{form.product_name | as_crispy_field}}
+            <br>
+            {{form.product_price | as_crispy_field}}
+            <br>
+            {{form.product_barcode | as_crispy_field}}
+            <br>
+            {{form.quantity | as_crispy_field}}
+            <br>
+            {{form.Persian_production_year | as_crispy_field}}
+            <br>
+            {{form.Persian_production_month | as_crispy_field}}
+            <br>
+            {{form.Persian_production_day | as_crispy_field}}
+            <br>
+            {{form.production_site | as_crispy_field}}
+            <br>
+            {{form.production_shift | as_crispy_field}}
+            <br>
+            {{form.complaint_status | as_crispy_field}}
+            <br>
+            {{form.action | as_crispy_field}}
+            <br>
+            {{form.action_description | as_crispy_field}}
+            <br>
+            {{form.action_date | as_crispy_field}}
+            <br>
+            <button type="submit" class="btn btn-primary">
+                Update Complaint &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
             </button>
+
+            &nbsp;
+
+            <a href="{% url 'dashboard' %}" class="btn btn-danger">
+                Cancel &nbsp;&nbsp; <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+
         </form>
         <br />
         <br />

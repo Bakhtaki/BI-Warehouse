@@ -19,6 +19,9 @@ urlpatterns = [
     path('update-complaint/<int:pk>',
          views.update_complaint, name="update-complaint"),
     # Detail view
-    path('view-complaint/<int:pk>', views.view_complaint, name="view-complaint"),
-
+    path('view-complaint/<int:pk>', views.view_complaint,
+         name="view-complaint"),
+    # Delete
+    path('delete-complaint/<int:pk>', views.delete_complaint,
+         name="delete-complaint"),
 ]

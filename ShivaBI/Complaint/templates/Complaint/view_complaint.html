@@ -3,56 +3,67 @@
 
 {% block content %}
 
-    <div class="card">
+<div class="card">
+    <div class="card-body">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
         <strong>
-            <br>
             &nbsp; &nbsp;
             {{ complaint.customer_family | upper }}
             {{ complaint.customer_name | upper }}
             <hr>
 
         </strong>
-        <div class="card-body">
-            <p><strong> ID: </strong> {{complaint.id}} </p>
-            <p><strong> Date: </strong> {{complaint.creation_date}} </p>
-            <p><strong> Name: </strong> {{complaint.customer_name}} </p>
-            <p><strong> Last Name: </strong> {{complaint.customer_family}} </p>
-            <p><strong> Phone: </strong> {{complaint.customer_phone}} </p>
-            <p><strong> Province: </strong> {{complaint.Province}} </p>
-            <p><strong> City: </strong> {{complaint.City}} </p>
-            <p><strong> Address: </strong> {{complaint.address}} </p>
-            <p><strong> Phone: </strong> {{complaint.customer_phone}} </p>
-            <p><strong> Customer Type: </strong> {{complaint.customer_type }} </p>
-            <p><strong> Acceptance: </strong> {{complaint.accepted }} </p>
-            <p><strong> Complaint Category: </strong> {{complaint.complaint_category }} </p>
-            <p><strong> Type Of External Material: </strong> {{complaint.external_material }} </p>
-            <p><strong> Description: </strong> {{complaint.complaint_description }} </p>
-            <p><strong> Product Category: </strong> {{complaint.product_category }} </p>
-            <p><strong> Product Code: </strong> {{complaint.product_code }} </p>
-            <p><strong> Product Name: </strong> {{complaint.product_name }} </p>
-            <p><strong> Product Price: </strong> {{complaint.product_price }} </p>
-            <p><strong> Product Barcode: </strong> {{complaint.barcode }} </p>
-            <p><strong> Product Quantity: </strong> {{complaint.quantity }} </p>
-            <p><strong> Production Year: </strong> {{complaint.persian_production_year }} </p>
-            <p><strong> Production Month: </strong> {{complaint.persian_production_month }} </p>
-            <p><strong> Production Day: </strong> {{complaint.persian_production_day }} </p>
-            <p><strong> Production Site: </strong> {{complaint.production_site }} </p>
-            <p><strong> Production Shift: </strong> {{complaint.production_shift }} </p>
-            <p><strong> Status: </strong> {{complaint.complaint_status }} <p>
-            <p><strong> Action: </strong> {{complaint.action }} <p>
-            <p><strong> Action Description: </strong> {{complaint.action_description }} <p>
-            <p><strong> Action Date: </strong> {{complaint.action_date }} <p>
-            <p><strong> Action DeadLine: </strong> {{complaint.action_deadline }} <p>
-            <p><strong> Responsible : </strong> {{complaint.action_responsible }} <p>
-            <p><strong> Git Send: </strong> {{complaint.gift_status }} <d>
-        </div>
+        <p><strong> ID: </strong> {{complaint.id}} </p>
+        <p><strong> Date: </strong> {{complaint.creation_date}} </p>
+        <p><strong> Name: </strong> {{complaint.customer_name}} </p>
+        <p><strong> Last Name: </strong> {{complaint.customer_family}} </p>
+        <p><strong> Phone: </strong> {{complaint.customer_phone}} </p>
+        <p><strong> Province: </strong> {{complaint.Province}} </p>
+        <p><strong> City: </strong> {{complaint.City}} </p>
+        <p><strong> Address: </strong> {{complaint.address}} </p>
+        <p><strong> Phone: </strong> {{complaint.customer_phone}} </p>
+        <p><strong> Customer Type: </strong> {{complaint.customer_type }} </p>
+        <p><strong> Acceptance: </strong> {{complaint.accepted }} </p>
+        <p><strong> Complaint Category: </strong> {{complaint.complaint_category }} </p>
+        <p><strong> Type Of External Material: </strong> {{complaint.external_material }} </p>
+        <p><strong> Description: </strong> {{complaint.complaint_description }} </p>
+        <p><strong> Product Category: </strong> {{complaint.product_category }} </p>
+        <p><strong> Product Code: </strong> {{complaint.product_code }} </p>
+        <p><strong> Product Name: </strong> {{complaint.product_name }} </p>
+        <p><strong> Product Price: </strong> {{complaint.product_price }} </p>
+        <p><strong> Product Barcode: </strong> {{complaint.barcode }} </p>
+        <p><strong> Product Quantity: </strong> {{complaint.quantity }} </p>
+        <p><strong> Production Year: </strong> {{complaint.persian_production_year }} </p>
+        <p><strong> Production Month: </strong> {{complaint.persian_production_month }} </p>
+        <p><strong> Production Day: </strong> {{complaint.persian_production_day }} </p>
+        <p><strong> Production Site: </strong> {{complaint.production_site }} </p>
+        <p><strong> Production Shift: </strong> {{complaint.production_shift }} </p>
+        <p><strong> Status: </strong> {{complaint.complaint_status }}
+        <p>
+        <p><strong> Action: </strong> {{complaint.action }}
+        <p>
+        <p><strong> Action Description: </strong> {{complaint.action_description }}
+        <p>
+        <p><strong> Action Date: </strong> {{complaint.action_date }}
+        <p>
+        <p><strong> Action DeadLine: </strong> {{complaint.action_deadline }}
+        <p>
+        <p><strong> Responsible : </strong> {{complaint.action_responsible }}
+        <p>
+        <p><strong> Git Send: </strong> {{complaint.gift_status }}
+        <p>
     </div>
+</div>
 
-    <br>
-    <a href="{% url 'dashboard' %}" class="btn btn-Secondry">return to dashboard</a>
-    &nbsp;
-    <a href="{% url 'update-complaint' complaint.id %}" class="btn btn-info">Update Complaint</a>
-    &nbsp;
-    <a href="{% url 'dashboard' %}" class="btn btn-danger"> Delete </a>
+<br>
+<a href="{% url 'dashboard' %}" class="btn btn-Secondry">return to dashboard &nbsp; <i class="fa fa-arrow-left"
+        aria-hidden="true"></i> </a>
+&nbsp;
+<a href="{% url 'update-complaint' complaint.id %}" class="btn btn-info">Update Complaint &nbsp; <i class="fa fa-check"
+        aria-hidden="true"></i> </a>
+&nbsp;
+<a href="{% url 'delete-complaint' complaint.id %}" class="btn btn-danger">Delete Complaint &nbsp; <i
+        class="fa fa-minus-circle" aria-hidden="true"></i></a>
+<br />
 
 {% endblock %}
