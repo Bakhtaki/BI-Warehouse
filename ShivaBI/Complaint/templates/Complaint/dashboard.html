@@ -34,7 +34,7 @@
                     <td>{{ complaint.product_category }}</td>
                     <td>{{ complaint.product_name }}</td>
                     <td>{{ complaint.action}}</td>
-                    <td><a class="btn btn-outline-primary btn-sm" href="{% url 'dashboard' %}">Details</a></td>
+                    <td> <a href="{% url 'view-complaint' complaint.id %}">Details</a></td>
                 </tr>
                 {% endfor %}
             {% endif %}

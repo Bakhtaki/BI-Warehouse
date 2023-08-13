@@ -98,6 +98,9 @@ def view_complaint(request, pk):
     return render(request, 'Complaint/view_complaint.html', context=context)
 
 
+# Delete a Complaint
+@login_required(login_url='login')
+def delete_complaint(request, pk):
 
 # Logout a user
 def logout(request):
